@@ -116,7 +116,7 @@ const printRows = (rows) => {
 const getWinnings = (rows, bet, lines) => {
   let winnings = 0;
 
-  for (let row = 0; row < lines; row6++) {
+  for (let row = 0; row < lines; row++) {
     const symbols = rows[row]
     let allSame = true;
     
@@ -141,5 +141,5 @@ const bet = getBet(balance, numberOfLines);
 const reels = spin();
 const rows = transpose(reels);
 printRows(rows);
-const winnings = getWinnings(rows, bet, lines);
+const winnings = getWinnings(rows, bet, numberOfLines);
 console.log("You won, $" + winnings.toString());
