@@ -36,5 +36,3 @@ const getNumberOfLines = () => {
 
 const depositAmount = deposit();
 const numberOfLines = getNumberOfLines();
-console.log("Deposit amount:", depositAmount);
-console.log("Number of lines:", numberOfLines);
