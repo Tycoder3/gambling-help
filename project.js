@@ -66,21 +66,28 @@ const getBet = (balance, lines) => {
 
 const spin = () => {
   const symbols = [];
-  for (const[Symbol, count] of Object.entries(SYBOLS_COUNT)) {
+  for (const [Symbol, count] of Object.entries(SYBOLS_COUNT)) {
     for (let i = 0; i < count; i++) {
       symbols.push(Symbol);
     }
   }
 
   const reels = [[], [], []];
-  for (let 1 = 0; 1 < COLS; 1++) {
-    
+  for (let i = 0; i < COLS; i++) {
+    const reelSybols = [...symbols];
     for (let j = 0; j < ROWS; j++) {
-      
+      const randomIndex = Math.floor(Math.random() * reelSybols.length)
+      const selectedSymbol = reelSybols[randomIndex];
+      reels[i].push(selectedSymbol);
+      reelSybols.splice(randomIndex, 1);
     }
   }
+
+  return reels;
 };
-spin();
+
+const reels = spin();
+console.log(reels);
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
