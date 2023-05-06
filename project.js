@@ -8,6 +8,23 @@
 
 const prompt = require("prompt-sync")();
 
+const ROWS = 3;
+const COLS = 3;
+
+const SYBOLS_COUNT = {
+  A: 2,
+  b: 4,
+  c: 6,
+  d: 8,
+};
+
+const SYBOLS_VALUES = {
+  A: 5,
+  b: 4,
+  c: 3,
+  d: 2,
+};
+
 const deposit = () => {
   while (true) {
     const depositAmount = prompt("Enter a deposit amount: ");
@@ -34,19 +51,36 @@ const getNumberOfLines = () => {
   }
 };
 
-const getBet = (balance) => {
+const getBet = (balance, lines) => {
   while (true) {
-    const bet = prompt("Enter the total bet: ");
+    const bet = prompt("Enter the bet per line: ");
     const numberBet = parseInt(bet);
 
-    if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance) {
+    if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
       console.log("Invalid bet, please try again.");
     } else {
       return numberBet;
     }
   }
-}
+};
 
+const spin = () => {
+  const symbols = [];
+  for (const[Symbol, count] of Object.entries(SYBOLS_COUNT)) {
+    for (let i = 0; i < count; i++) {
+      symbols.push(Symbol);
+    }
+  }
+
+  const reels = [[], [], []];
+  for (let 1 = 0; 1 < COLS; 1++) {
+    
+    for (let j = 0; j < ROWS; j++) {
+      
+    }
+  }
+};
+spin();
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
-const bet = getBet(balance);
+const bet = getBet(balance, numberOfLines);
