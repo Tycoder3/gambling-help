@@ -1,8 +1,8 @@
 // 1. Despot some money
-// 2. determine nuber of lines to bet on
-// 3. colect bet amount
+// 2. determine number of lines to bet on
+// 3. collect bet amount
 // 4. spin weel
-// 5. chek if won
+// 5. check if won
 // 6. give out winnings
 // 7. play again
 
@@ -11,14 +11,14 @@ const prompt = require("prompt-sync")();
 const ROWS = 3;
 const COLS = 3;
 
-const SYBOLS_COUNT = {
+const SYMBOLS_COUNT = {
   A: 2,
   b: 4,
   c: 6,
   d: 8,
 };
 
-const SYBOLS_VALUES = {
+const SYMBOLS_VALUES = {
   A: 5,
   b: 4,
   c: 3,
@@ -66,7 +66,7 @@ const getBet = (balance, lines) => {
 
 const spin = () => {
   const symbols = [];
-  for (const [Symbol, count] of Object.entries(SYBOLS_COUNT)) {
+  for (const [Symbol, count] of Object.entries(SYMBOLS_COUNT)) {
     for (let i = 0; i < count; i++) {
       symbols.push(Symbol);
     }
@@ -75,12 +75,12 @@ const spin = () => {
   const reels = [];
   for (let i = 0; i < COLS; i++) {
     reels.push([]);
-    const reelSybols = [...symbols];
+    const reelSymbols = [...symbols];
     for (let j = 0; j < ROWS; j++) {
-      const randomIndex = Math.floor(Math.random() * reelSybols.length)
-      const selectedSymbol = reelSybols[randomIndex];
+      const randomIndex = Math.floor(Math.random() * reelSymbols.length)
+      const selectedSymbol = reelSymbols[randomIndex];
       reels[i].push(selectedSymbol);
-      reelSybols.splice(randomIndex, 1);
+      reelSymbols.splice(randomIndex, 1);
     }
   }
 
@@ -128,7 +128,7 @@ const getWinnings = (rows, bet, lines) => {
     }
 
     if (allSame) {
-      winnings += bet * SYBOLS_VALUES[symbols[0]]
+      winnings += bet * SYMBOLS_VALUES[symbols[0]]
     }
   }
 
